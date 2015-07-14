@@ -20,8 +20,8 @@ class JSXTransformer(object):
 
     JSX_TRANSFORMER_JS_EXPR = '(global.JSXTransformer || module.exports)'
 
-    def __init__(self):
-        path = react.source.path_for('JSXTransformer.js')
+    def __init__(self, react_path=None):
+        path = react.source.path_for('JSXTransformer.js', react_path)
         with open(path, 'rU') as f:
             self.context = execjs.compile(f.read())
 

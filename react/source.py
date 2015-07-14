@@ -17,8 +17,12 @@ from os.path import abspath, dirname, isfile, join
 
 JS_ROOT = abspath(join(dirname(__file__), 'js/react'))
 
-def path_for(react_file):
-    path = join(JS_ROOT, react_file)
+def path_for(react_file, react_path):
+    if react_path is None:
+        path = join(JS_ROOT, react_file)
+    else:
+        path = join(react_path, react_file)
+
     if isfile(path):
         return path
     else:
